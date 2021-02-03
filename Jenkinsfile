@@ -1,10 +1,6 @@
 #!/usr/bin/env groovy
 pipeline {
     agent any
-    tools {
-        jdk 'OpenJDK-15.0.2'
-    }
-
 
     stages {
          stage('Setup') {
@@ -17,11 +13,6 @@ pipeline {
             steps {
                 withGradle {
                     sh './gradlew bootRun'
-                }
-            }
-            post {
-                success {
-                    archiveArtifacts 'build/libs/*.jar'
                 }
             }
         }
