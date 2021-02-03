@@ -12,21 +12,7 @@ pipeline {
             steps {
                 git url:'http://10.250.10.2:8929/root/hello-grails.git', branch: 'master'
             }
-        } 
-
-         stage('Build') {
-            steps {
-                withGradle {
-                    sh './gradlew bootRun'
-                }
-            }
-            post {
-                success {
-                    archiveArtifacts 'build/libs/*.jar'
-                }
-            }
-        }
-   
+        }    
 
         stage('Test') {
             steps {
