@@ -12,13 +12,14 @@ pipeline {
             steps {
                 git url:'http://10.250.10.2:8929/root/hello-grails.git', branch: 'master'
             }
-        }    
+        } 
+
 
         stage('Test') {
             steps {
                 withGradle {
                     sh './gradlew test'
-                    sh './gradlew test jacocoTestReport'
+                    /*sh './gradlew test jacocoTestReport'*/
                 }
             }
             post {
