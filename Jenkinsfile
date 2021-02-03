@@ -41,7 +41,7 @@ pipeline {
             }
         } 
 
-        stage('Test-Integration') {
+        /*stage('Test-Integration') {
             steps {
                 withGradle {
                     sh './gradlew integrationTest'
@@ -53,7 +53,7 @@ pipeline {
                     junit 'build/test-results/integrationTest$/TEST-*.xml'
                 }
             }
-        } 
+        } */
         
     }
 }
