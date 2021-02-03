@@ -31,12 +31,26 @@ pipeline {
             steps {
                 withGradle {
                     sh './gradlew test'
-                    /*sh './gradlew test jacocoTestReport'*/
+                    sh './gradlew test jacocoTestReport'
                 }
             }
             post {
                 always {
                     junit 'build/test-results/test/TEST-*.xml'
+                }
+            }
+        } 
+
+        stage('Test-Integration') {
+            steps {
+                withGradle {
+                    sh './gradlew integrationTest'
+                    sh './gradlew integrationTest jacocoTestReport'
+                }
+            }
+            post {
+                always {
+                    junit 'build/test-results/integrationTest$/TEST-*.xml'
                 }
             }
         } 
