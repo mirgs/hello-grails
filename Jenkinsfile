@@ -9,6 +9,15 @@ pipeline {
             }
         }
 
+        stage('Build') {
+            steps {
+                withGradle {
+                    sh './gradlew bootRun'
+                }
+            }
+        }
+    
+
         stage('Test') {
             steps {
                 withGradle {
