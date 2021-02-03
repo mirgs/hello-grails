@@ -7,16 +7,7 @@ pipeline {
             steps {
                 git url:'http://10.250.10.2:8929/root/hello-grails.git', branch: 'main'
             }
-        }
-
-        stage('Build') {
-            steps {
-                withGradle {
-                    sh './gradlew bootRun'
-                }
-            }
-        }
-    
+        }    
 
         stage('Test') {
             steps {
