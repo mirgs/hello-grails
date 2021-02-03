@@ -14,6 +14,18 @@ pipeline {
             }
         } 
 
+        /*stage('Build') {
+            steps {
+                withGradle {
+                    sh './gradlew bootRun'
+                }
+            }
+            post {
+                success {
+                    archiveArtifacts 'build/libs/*.jar'
+                }
+            }
+        }*/
 
         stage('Test') {
             steps {
