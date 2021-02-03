@@ -1,9 +1,9 @@
 #!/usr/bin/env groovy
 pipeline {
     agent any
-    tools {
+    /*tools {
         jdk 'OpenJDK-15.0.2'
-    }
+    }*/
 
 
 
