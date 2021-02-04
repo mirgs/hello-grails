@@ -65,7 +65,7 @@ pipeline {
                             allowMissing : false,
                             alwaysLinkToLastBuild : false,
                             keepAll : true,
-                            reportDir: "build/reports/codenarc*",
+                            reportDir: "build/reports/codenarc",
                             reportFiles: "*.html",
                             reportName : "Codenarc Report"
                         ]
