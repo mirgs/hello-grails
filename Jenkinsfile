@@ -46,7 +46,7 @@ pipeline {
             steps {
                 withGradle {
                     sh './gradlew clean integrationTest'
-                    /*sh './gradlew integrationTest jacocoTestReport'*/
+                    sh './gradlew integrationTest jacocoTestReport'
                 }
             }
             post {
