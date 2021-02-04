@@ -35,7 +35,7 @@ pipeline {
             }
         }
 
-        /*stage('Test') {
+        stage('Test') {
             steps {
                 withGradle {
                     sh './gradlew clean test'
@@ -45,7 +45,7 @@ pipeline {
             }
             post {
                 always {
-                    junit 'build/test-results/--/TEST-*.xml'
+                    junit 'build/test-results/**/TEST-*.xml'
                     publishHTML (
                         target: [
                             allowMissing : false,
@@ -58,7 +58,7 @@ pipeline {
                     )
                 }
             }
-        }*/
+        }
         
     }
 }
