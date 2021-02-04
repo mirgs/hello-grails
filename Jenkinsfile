@@ -46,8 +46,8 @@ pipeline {
                             reportDir: "*.html",
                             reportName : "Codenarc Report"
                         ]
-                    }
-                }*/
+                    }*/
+                }
             }
         } 
 
