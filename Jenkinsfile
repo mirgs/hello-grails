@@ -42,6 +42,7 @@ pipeline {
                     //sh './gradlew -Dgeb.env=firefoxHeadless iT'
                     echo 'Variable'
                     sh 'cat ${env.PACKER_OPTIONS}'
+                    echo 'otraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
                     sh './gradlew ${env.PACKER_OPTIONS} iT'
                     sh './gradlew codenarcTest'
                 }
