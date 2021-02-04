@@ -41,9 +41,9 @@ pipeline {
                     sh './gradlew clean test'
                     //sh './gradlew -Dgeb.env=firefoxHeadless iT'
                     echo 'Variable'
-                    sh 'cat ${env.systemProp.geb.env}'
+                    //sh 'cat ${env.systemProp.geb.env}'
                     echo 'otraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-                    sh './gradlew ${env.systemProp.geb.env} iT'
+                    sh './gradlew -Dgeb.env=${env.systemProp.geb.env} iT'
                     sh './gradlew codenarcTest'
                 }
             }
