@@ -30,12 +30,12 @@ pipeline {
         stage('Test') {
             steps {
                 withGradle {
-                    sh './gradlew test'
+                    sh './gradlew clean test'
                     /*sh './gradlew test jacocoTestReport'*/
                 }
             }
             post {
-                success {
+                always {
                     junit 'build/test-results/test/TEST-*.xml'
                 }
             }
