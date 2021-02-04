@@ -35,17 +35,17 @@ pipeline {
             }
         }
 
-        /*stage('Test') {
+        stage('Test') {
             steps {
                 withGradle {
                     sh './gradlew clean test'
-                    sh './gradlew -Dgeb.env=firefoxHeadless iT'
+                    //sh './gradlew -Dgeb.env=firefoxHeadless iT'
                     sh './gradlew codenarcTest'
                 }
             }
             post {
                 always {
-                    junit 'build/test-results/--/TEST-*.xml'
+                    junit 'build/test-results/**/TEST-*.xml'
                     publishHTML (
                         target: [
                             allowMissing : false,
@@ -58,7 +58,7 @@ pipeline {
                     )
                 }
             }
-        }*/
+        }
         
     }
 }
