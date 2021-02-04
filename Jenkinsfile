@@ -38,7 +38,7 @@ pipeline {
             post {
                 always {
                     junit 'build/test-results/test/TEST-*.xml'
-                    /*publishHTML {
+                    publishHTML {
                         target: [
                             allowMissing : false,
                             alwaysLinkToLastBuild : false,
@@ -46,7 +46,7 @@ pipeline {
                             reportDir: "*.html",
                             reportName : "Codenarc Report"
                         ]
-                    }*/
+                    }
                 }
             }
         } 
