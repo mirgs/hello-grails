@@ -7,7 +7,7 @@ pipeline {
 
 
 
-    stages 
+    stages {
          stage('Setup') {
             steps {
                 git url:'http://10.250.10.2:8929/root/hello-grails.git', branch: 'master'
@@ -62,3 +62,4 @@ pipeline {
         
     }
 }
+
