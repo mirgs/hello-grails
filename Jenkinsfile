@@ -31,36 +31,14 @@ pipeline {
             steps {
                 withGradle {
                     sh './gradlew clean test'
-                    sh './gradlew codenarcTest'
-                }
-            }
-            post {
-                always {
-                    junit 'build/test-results/test/TEST-*.xml'
-                    publishHTML (
-                        target: [
-                            allowMissing : false,
-                            alwaysLinkToLastBuild : false,
-                            keepAll : true,
-                            reportDir: "build/reports/codenarc",
-                            reportFiles: "*.html",
-                            reportName : "Codenarc Report"
-                        ]
-                    )
-                }
-            }
-        } 
-
-        stage('Test-Integration') {
-            steps {
-                withGradle {
                     sh './gradlew -Dgeb.env=firefoxHeadless iT'
                     sh './gradlew codenarcTest'
                 }
             }
             post {
                 always {
-                    junit 'build/test-results/integrationTest$/TEST-*.xml'publishHTML (
+                    junit 'build/test-results/**/TEST-*.xml'
+                    publishHTML (
                         target: [
                             allowMissing : false,
                             alwaysLinkToLastBuild : false,
