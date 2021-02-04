@@ -35,7 +35,7 @@ pipeline {
                 }
             }
             post {
-                always {
+                success {
                     junit 'build/test-results/test/TEST-*.xml'
                 }
             }
