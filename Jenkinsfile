@@ -29,7 +29,7 @@ pipeline {
 
         stage('Add Config files') {
             steps {
-                configFileProvider([configFile(fileId: 'hello-grails-gradle.properties', targetLocation: 'configGradle')]) {
+                configFileProvider([configFile(fileId: 'hello-grails-gradle.properties', targetLocation: 'systemProp.geb')]) {
 
                 }
             }
