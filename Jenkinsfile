@@ -29,7 +29,7 @@ pipeline {
 
         stage('Add Config files') {
             steps {
-                configFileProvider([configFile(fileId: 'hello-grails-gradle.properties', targetLocation: 'PACKER_OPTIONS')]) {
+                configFileProvider([configFile(fileId: 'hello-grails-gradle.properties', targetLocation: 'configGradle')]) {
 
                 }
             }
@@ -41,9 +41,9 @@ pipeline {
                     sh './gradlew clean test'
                     //sh './gradlew -Dgeb.env=firefoxHeadless iT'
                     echo 'Variable'
-                    //sh 'cat ${env.PACKER_OPTIONS}'
-                    //echo 'otraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-                    sh './gradlew ${env.PACKER_OPTIONS} iT'
+                    sh 'cat ${env.systemProp.geb.env}'
+                    echo 'otraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+                    sh './gradlew ${env.systemProp.geb.env} iT'
                     sh './gradlew codenarcTest'
                 }
             }
