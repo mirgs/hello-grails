@@ -31,7 +31,7 @@ pipeline {
             steps {
                 withGradle {
                     sh './gradlew clean test'
-                    sh './gradlew test jacocoTestReport'
+                    /*sh './gradlew test jacocoTestReport'*/
                 }
             }
             post {
@@ -41,11 +41,11 @@ pipeline {
             }
         } 
 
-        /*stage('Test-Integration') {
+        stage('Test-Integration') {
             steps {
                 withGradle {
                     sh './gradlew clean integrationTest'
-                    sh './gradlew integrationTest jacocoTestReport'
+                    /*sh './gradlew integrationTest jacocoTestReport'*/
                 }
             }
             post {
@@ -53,7 +53,7 @@ pipeline {
                     junit 'build/test-results/integrationTest$/TEST-*.xml'
                 }
             }
-        }*/
+        }
         
     }
 }
