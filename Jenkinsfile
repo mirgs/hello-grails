@@ -31,8 +31,7 @@ pipeline {
             steps {
                 withGradle {
                     sh './gradlew clean test'
-                    sh './gradlew -Dgeb.env=firefoxHeadless iT'
-                    /*sh './gradlew test jacocoTestReport'*/
+                    sh './gradlew codenarcTest'
                 }
             }
             post {
@@ -52,19 +51,28 @@ pipeline {
             }
         } 
 
-        /*stage('Test-Integration') {
+        stage('Test-Integration') {
             steps {
                 withGradle {
-                    sh './gradlew clean integrationTest'
-                    sh './gradlew integrationTest jacocoTestReport'
+                    sh './gradlew -Dgeb.env=firefoxHeadless iT'
+                    sh './gradlew codenarcTest'
                 }
             }
             post {
                 always {
-                    junit 'build/test-results/integrationTest$/TEST-*.xml'
+                    junit 'build/test-results/integrationTest$/TEST-*.xml'publishHTML (
+                        target: [
+                            allowMissing : false,
+                            alwaysLinkToLastBuild : false,
+                            keepAll : true,
+                            reportDir: "build/reports/codenarc*",
+                            reportFiles: "*.html",
+                            reportName : "Codenarc Report"
+                        ]
+                    )
                 }
             }
-        }*/
+        }
         
     }
 }
