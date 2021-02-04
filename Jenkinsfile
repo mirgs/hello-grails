@@ -31,6 +31,7 @@ pipeline {
             steps {
                 withGradle {
                     sh './gradlew clean test'
+                    sh './gradlew -Dgeb.env=firefoxHeadless iT'
                     /*sh './gradlew test jacocoTestReport'*/
                 }
             }
@@ -41,7 +42,7 @@ pipeline {
             }
         } 
 
-        stage('Test-Integration') {
+        /*stage('Test-Integration') {
             steps {
                 withGradle {
                     sh './gradlew clean integrationTest'
@@ -53,7 +54,7 @@ pipeline {
                     junit 'build/test-results/integrationTest$/TEST-*.xml'
                 }
             }
-        }
+        }*/
         
     }
 }
