@@ -29,27 +29,23 @@ pipeline {
 
         stage('Add Config files') {
             steps {
-                configFileProvider([configFile(fileId: 'hello-grails-gradle.properties', targetLocation: 'systemProp.geb')]) {
-
+                configFileProvider([configFile(fileId: 'hello-grails-gradle.properties', targetLocation: 'gradle.properties')]) {
+                    sh './gradlew iT'
                 }
             }
         }
 
-        stage('Test') {
+        /*stage('Test') {
             steps {
                 withGradle {
                     sh './gradlew clean test'
-                    //sh './gradlew -Dgeb.env=firefoxHeadless iT'
-                    echo 'Variable'
-                    //sh 'cat ${env.systemProp.geb.env}'
-                    echo 'otraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-                    sh './gradlew -Dgeb.env=${env.systemProp.geb.env} iT'
+                    sh './gradlew -Dgeb.env=firefoxHeadless iT'
                     sh './gradlew codenarcTest'
                 }
             }
             post {
                 always {
-                    junit 'build/test-results/**/TEST-*.xml'
+                    junit 'build/test-results/--/TEST-*.xml'
                     publishHTML (
                         target: [
                             allowMissing : false,
@@ -62,7 +58,7 @@ pipeline {
                     )
                 }
             }
-        }
+        }*/
         
     }
 }
