@@ -7,7 +7,7 @@ pipeline {
 
 
 
-    stages {
+    stages 
          stage('Setup') {
             steps {
                 git url:'http://10.250.10.2:8929/root/hello-grails.git', branch: 'master'
@@ -27,7 +27,15 @@ pipeline {
             }
         }*/
 
-        stage('Test') {
+        stage('Add Config files') {
+            steps {
+                configFileProvider([configFile(fileId: 'hello-grails-gradle.properties', targetLocation: 'DestinationFileForFile1')]) {
+
+                }
+            }
+        }
+
+        /*stage('Test') {
             steps {
                 withGradle {
                     sh './gradlew clean test'
@@ -50,7 +58,7 @@ pipeline {
                     )
                 }
             }
-        }
+        }*/
         
     }
 }
