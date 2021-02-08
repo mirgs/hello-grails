@@ -10,7 +10,7 @@ pipeline {
     stages {
          stage('Setup') {
             steps {
-                git url:'http://10.250.10.2:8929/root/hello-grails.git', branch: 'master'
+                git url:'http://10.250.10.2:8929/root/hello-grails.git', branch: 'sonar'
             }
         } 
 
@@ -59,6 +59,19 @@ pipeline {
                 }
             }
         }
+
+        stage('SonarQube analysis') {
+            steps {
+                withGradle {
+                    sh './gradlew check'
+
+                }
+                withSonarQubeEnv(credentialsId: 'd79d7732-a255-4cad-8598-f577ea60755a', installationName: 'local') {
+                    sh './gradlew sonarqube'
+                }
+            }
+        }
+
         
     }
 }
