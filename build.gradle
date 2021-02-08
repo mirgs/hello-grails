@@ -7,6 +7,8 @@ buildscript {
         classpath "gradle.plugin.com.github.erdi.webdriver-binaries:webdriver-binaries-gradle-plugin:2.2"
         classpath "org.grails.plugins:hibernate5:7.0.4"
         classpath "com.bertramlabs.plugins:asset-pipeline-gradle:3.3.1"
+        //classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5"
+	classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.1.1"
     }
 }
 
@@ -20,6 +22,10 @@ apply plugin:"org.grails.grails-web"
 apply plugin:"com.github.erdi.webdriver-binaries"
 apply plugin:"com.bertramlabs.asset-pipeline"
 apply plugin:"org.grails.grails-gsp"
+apply plugin:"java"
+apply plugin:"org.sonarqube"
+apply plugin:"jacoco"
+
 
 repositories {
     maven { url "https://repo.grails.org/grails/core" }
@@ -30,6 +36,10 @@ configurations {
     runtimeClasspath {
         extendsFrom developmentOnly
     }
+}
+
+test {
+  ignoreFailures = true
 }
 
 dependencies {
@@ -121,3 +131,11 @@ apply from: "${rootProject.projectDir}/gradle/codenarc.gradle"
 codenarcMain.group 'static analysis'
 codenarcTest.group 'static analysis'
 codenarcIntegrationTest.group 'static analysis'
+
+//sonar.projectKey='d79d7732-a255-4cad-8598-f577ea60755a'
+//sonar.projectName='demo'
+//sonar.projectVersion='1.0'
+//sonar.sources=src/groovy,grails-app/services,grails-app/controllers,grails-app/domain,grails-app/utils,test/unit
+//sonar.language='grvy'
+//sonar.sourceEncoding='UTF-8'
+//sonar.groovy.cobertura.reportPath='target/test-reports/coverage/coverage.xml'
